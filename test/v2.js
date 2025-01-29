@@ -10,6 +10,8 @@ import {
   HmrcVatCheckerV2ResponseAddress
 } from '../lib/v2/response.js'
 
+const isGithubRunner = !!process.env.IS_GITHUB_ACTION
+
 describe('v2 API', () => {
 
   let vatChecker
@@ -40,7 +42,8 @@ describe('v2 API', () => {
     this.slow(1000)
 
     // avoid rate limits
-    const hmrcRequestInterval = 1000 / 3
+    // GH runners do 3 concurrent so divide further
+    const hmrcRequestInterval = 1000 / (3 / (isGithubRunner ? 3 : 1))
     beforeEach(done => setTimeout(done, hmrcRequestInterval))
 
     for(const testKey in testData) {

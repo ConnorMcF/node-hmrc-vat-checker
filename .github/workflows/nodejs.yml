@@ -25,5 +25,6 @@ jobs:
       - run: npm ci
       - run: npm test
         env:
+          IS_GITHUB_ACTION: true
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
