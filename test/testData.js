@@ -32,7 +32,7 @@ const testData = {
       "countryCode": "GB"
     }
   },
-  "293129633": {
+  "GB293129633": {
     "exists": true,
     "name": "MS&AD Insurance",
     "vatNumber": "293129633",
@@ -43,7 +43,7 @@ const testData = {
       "countryCode": "GB"
     }
   },
-  "309335202": {
+  "GB309335202": {
     "exists": true,
     "name": "Old Fujitsub",
     "vatNumber": "309335202",
@@ -54,7 +54,7 @@ const testData = {
       "countryCode": "GB"
     }
   },
-  "436189915": {
+  "GB436189915": {
     "exists": true,
     "name": "Phillia Communics Cor",
     "vatNumber": "436189915",
@@ -65,7 +65,7 @@ const testData = {
       "countryCode": "GB"
     }
   },
-  "462794985": {
+  "GB462794985": {
     "exists": true,
     "name": "Communitex",
     "vatNumber": "462794985",
@@ -76,7 +76,7 @@ const testData = {
       "countryCode": "GB"
     }
   },
-  "486691505": {
+  "GB486691505": {
     "exists": true,
     "name": "Deutsche",
     "vatNumber": "486691505",
@@ -87,7 +87,7 @@ const testData = {
       "countryCode": "GB"
     }
   },
-  "494521394": {
+  "GB494521394": {
     "exists": true,
     "name": "Life Internati",
     "vatNumber": "494521394",
@@ -98,7 +98,7 @@ const testData = {
       "countryCode": "GB"
     }
   },
-  "553557881": {
+  "GB553557881": {
     "exists": true,
     "name": "Credite Sberger Donal Inc.",
     "vatNumber": "553557881",

@@ -14,6 +14,7 @@ const isGithubRunner = !!process.env.IS_GITHUB_ACTION
 
 describe('v2 API', () => {
 
+  let invalidVatChecker
   let vatChecker
 
   before(() => {
@@ -26,7 +27,57 @@ describe('v2 API', () => {
   })
 
   describe('initialise', function() {
-    it('should initialise', () => {
+    it('should initialise production', () => {
+      const vatCheckerProd = new HmrcVatCheckerV2({
+        env: 'production',
+        clientId: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+        clientSecret: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+      })
+
+      expect(vatCheckerProd).to.be.an.instanceOf(HmrcVatCheckerV2)
+    })
+
+    it('should throw with an invalid env', () => {
+      expect(() => {
+        new HmrcVatCheckerV2({
+          env: 'fake'
+        })
+      }).to.throw('baseUrl is required, is your env valid?')
+    })
+
+    it('should not initialise without clientId', () => {
+      expect(() => {
+        new HmrcVatCheckerV2({
+          clientSecret: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+        })
+      }).to.throw('clientId is required')
+    })
+
+    it('should not initialise without clientSecret', () => {
+      expect(() => {
+        new HmrcVatCheckerV2({
+          clientId: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+        })
+      }).to.throw('clientSecret is required')
+    })
+
+    it('should fail to authenticate with invalid credentials', () => {
+      const vatCheckerBadCred = new HmrcVatCheckerV2({
+        env: 'sandbox',
+        clientId: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+        clientSecret: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+      })
+
+      vatCheckerBadCred.authenticate()
+        .then(() => {
+          expect.fail('Should not resolve')
+        })
+        .catch(err => {
+          expect(err.message).to.equal('Failed to authenticate with HMRC: invalid client id or secret')
+        })
+    })
+
+    it('should initialise sandbox', () => {
       vatChecker = new HmrcVatCheckerV2({
         env: 'sandbox',
         clientId: process.env.CLIENT_ID,
@@ -35,6 +86,16 @@ describe('v2 API', () => {
       })
 
       expect(vatChecker).to.be.an.instanceOf(HmrcVatCheckerV2)
+    })
+
+    it('should authenticate with valid credentials', () => {
+      vatChecker.authenticate()
+        .then(() => {
+          expect(vatChecker.config.accessToken).to.be.a('string')
+        })
+        .catch(err => {
+          expect.fail(err)
+        })
     })
   })
 

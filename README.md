@@ -7,8 +7,8 @@ import { HmrcVatCheckerV2 } from 'hmrc-vat-checker'
 
 const vatChecker = new HmrcVatCheckerV2({
   env: 'sandbox', // or 'production'
-  clientId: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET
+  clientId: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+  clientSecret: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 })
 
 const vatNumberToCheck = '245719348'
@@ -33,7 +33,7 @@ vatChecker.checkVatNumber(vatNumberToCheck)
     */
   })
   .catch(err => {
-    // Error while checking
+    // # Error while checking
     // Non-existent VAT numbers will resolve the promise with
     //   HmrcVatCheckerV2Response.exists === false
     // Invalid VAT number will error here

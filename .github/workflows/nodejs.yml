@@ -23,7 +23,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm ci
-      - run: npm test
+      - run: npm run coverage
         env:
           IS_GITHUB_ACTION: true
           CLIENT_ID: ${{ secrets.CLIENT_ID }}

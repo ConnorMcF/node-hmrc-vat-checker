@@ -15,12 +15,28 @@ describe('v1 API', () => {
   let vatChecker
 
   describe('initialise', function() {
-    it('should initialise', () => {
+    it('should initialise production', () => {
+      const vatCheckerProd = new HmrcVatCheckerV1({
+        env: 'production'
+      })
+
+      expect(vatCheckerProd).to.be.an.instanceOf(HmrcVatCheckerV1)
+    })
+
+    it('should initialise sandbox', () => {
       vatChecker = new HmrcVatCheckerV1({
         env: 'sandbox'
       })
 
       expect(vatChecker).to.be.an.instanceOf(HmrcVatCheckerV1)
+    })
+
+    it('should throw with an invalid env', () => {
+      expect(() => {
+        new HmrcVatCheckerV1({
+          env: 'fake'
+        })
+      }).to.throw('baseUrl is required, is your env valid?')
     })
   })
 
