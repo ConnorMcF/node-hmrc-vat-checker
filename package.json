@@ -9,8 +9,12 @@
     "hmrc",
     "vat number"
   ],
-  "main": "index.js",
+  "main": "lib/index.js",
   "type": "module",
+  "files": [
+    "lib",
+    "LICENSE"
+  ],
   "scripts": {
     "test": "mocha --exit",
     "coverage": "c8 npm test"
