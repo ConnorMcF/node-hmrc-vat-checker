@@ -1,0 +1,27 @@
+{
+  "name": "hmrc-vat-checker",
+  "version": "1.0.0",
+  "description": "Validate and check info for UK VAT numbers",
+  "homepage": "https://github.com/ConnorMcF/node-hmrc-vat-checker",
+  "keywords": [
+    "vat",
+    "uk vat",
+    "hmrc",
+    "vat number"
+  ],
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha --exit"
+  },
+  "author": "Connor McFarlane <cm@semtex.net>",
+  "license": "MIT",
+  "repository": "github:ConnorMcF/node-hmrc-vat-checker",
+  "bugs": {
+    "url": "https://github.com/ConnorMcF/node-hmrc-vat-checker/issues"
+  },
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "mocha": "^11.1.0"
+  }
+}
